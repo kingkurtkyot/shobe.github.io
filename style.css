@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #7b2ff7, #f107a3);
+  font-family: 'Jua', sans-serif;
+  color: #fffafa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  width: 100%;
+  background: rgba(38, 0, 72, 0.75);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 20px #ac61f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px #c0a0ff;
+}
+
+.pictures {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 850px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.picture {
+  background-color: #9b59b6;
+  border: 3px solid #d7bde2;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(155, 89, 182, 0.6);
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.picture:hover {
+  transform: scale(1.1) rotate(5deg);
+  border-color: #f8c3ff;
+  box-shadow: 0 0 25px 6px #f8c3ff;
+}
+
+.letter-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+  display: block;
+}
+
+.letter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto 30px auto;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.envelope {
+  position: relative;
+  background: #fffbe8;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 4px 20px #c2a677;
+  padding: 40px 25px 30px 25px;
+  z-index: 2;
+  font-family: 'Jua', sans-serif;
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to bottom, #ffd6a8, #fffbe8);
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  border-radius: 16px 16px 0 0;
+  z-index: 1;
+}
+
+.letter {
+  color: #6b543e;
+  font-size: 1.1rem;
+  white-space: pre-wrap;
+  line-height: 1.6;
+  z-index: 3;
+  position: relative;
+}
+
+
+#toggleMessageBtn {
+  margin-top: 0;
+  padding: 12px 25px;
+  background-color: #8e44ad;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 5px 15px #9b59b6;
+  transition: background-color 0.3s ease;
+  font-family: 'Jua', sans-serif;
+}
+
+#toggleMessageBtn:hover {
+  background-color: #a569bd;
+}
+
+.bt21-footer {
+  margin-top: 40px;
+  font-size: 1.2rem;
+  color: #d3b6f3;
+  font-style: italic;
+}
