@@ -1,7 +1,7 @@
 // Example images you can replace with your own images' URLs or local paths
 const imageUrls = [
   '1.jpg', // RJ
-  '2.jpg', // Chimmy
+  '2.jpeg', // Chimmy
   '3.jpg', // Koya
   '4.jpg', // Tata
   '5.jpg', // Cooky
@@ -18,8 +18,10 @@ const imageUrls = [
   '16.jpeg', // Shooky
   '17.jpeg', // Mang
   '18.jpeg', // Van
-  '19.jpeg', // Apeach
-  '20.jpeg' // Neo
+  '19.jpg', // Apeach
+  '20.jpeg', // Neo
+  '21.jpeg', // RJ
+  '22.jpg'  // Chimmy
 ];
 
 window.addEventListener('DOMContentLoaded', () => {
