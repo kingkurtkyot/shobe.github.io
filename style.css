@@ -252,7 +252,86 @@ body {
 #toggleMessageBtn:hover {
   background-color: #a569bd;
 }
+.audio-container {
+  margin-top: 20px;
+  text-align: center;
+}
 
+.vinyl-design {
+  display: inline-block;
+  padding: 20px;
+  background: linear-gradient(135deg, #7b2ff7, #f107a3);
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(155, 89, 182, 0.6);
+  position: relative;
+  width: 350px;
+}
+
+.vinyl-record {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, #000 60%, #444 100%);
+  border-radius: 50%;
+  margin: 0 auto 20px auto;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.vinyl-record.spin {
+  animation: spin 3s linear infinite; /* Apply spinning animation */
+}
+
+.vinyl-center {
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spinning-indicator {
+  width: 5px;
+  height: 5px;
+  background: #ff9ff3;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px; /* Position near the edge */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+audio {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(155, 89, 182, 0.6);
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.vinyl-record {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, #000 60%, #444 100%);
+  border-radius: 50%;
+  margin: 0 auto 20px auto;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.vinyl-record.spin {
+  animation: spin 3s linear infinite; /* Apply spinning animation */
+}
 .bt21-footer {
   margin-top: 40px;
   font-size: 1rem; /* Adjust font size for smaller screens */
@@ -290,5 +369,13 @@ body {
 
   .bt21-footer {
     font-size: 0.9rem; /* Smaller font size for mobile */
+  }
+
+  .vinyl-design {
+    width: 250px; /* Smaller size for mobile */
+  }
+  .vinyl-record {
+    width: 120px; /* Smaller size for mobile */
+    height: 120px; /* Smaller size for mobile */
   }
 }

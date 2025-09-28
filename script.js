@@ -142,3 +142,58 @@ window.addEventListener('DOMContentLoaded', () => {
     toggleBtn.textContent = visible ? 'Hide Message' : 'Show Message';
   });
 });
+window.addEventListener('DOMContentLoaded', () => {
+  const audio = document.querySelector('.audio-container audio');
+  const vinylRecord = document.querySelector('.vinyl-record');
+
+  // Add event listeners to start and stop spinning
+  audio.addEventListener('play', () => {
+    vinylRecord.classList.add('spin'); // Start spinning
+  });
+
+  audio.addEventListener('pause', () => {
+    vinylRecord.classList.remove('spin'); // Stop spinning
+  });
+
+  audio.addEventListener('ended', () => {
+    vinylRecord.classList.remove('spin'); // Stop spinning when audio ends
+  });
+});
+window.addEventListener('DOMContentLoaded', () => {
+  const audio = document.querySelector('.audio-container audio');
+  const vinylRecord = document.querySelector('.vinyl-record');
+  let currentRotation = 0; // Track the current rotation angle
+
+  // Function to update the rotation angle
+  const updateRotation = () => {
+    const computedStyle = window.getComputedStyle(vinylRecord);
+    const matrix = computedStyle.transform;
+
+    if (matrix !== 'none') {
+      const values = matrix.split('(')[1].split(')')[0].split(',');
+      const a = values[0];
+      const b = values[1];
+      const angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+      currentRotation = angle < 0 ? angle + 360 : angle; // Normalize angle
+    }
+  };
+
+  // Add event listeners to start and stop spinning
+  audio.addEventListener('play', () => {
+    vinylRecord.style.animation = 'none'; // Disable animation to set rotation
+    vinylRecord.style.transform = `rotate(${currentRotation}deg)`; // Resume from current rotation
+    vinylRecord.style.animation = `spin 3s linear infinite`; // Start spinning
+  });
+
+  audio.addEventListener('pause', () => {
+    updateRotation(); // Update the current rotation angle
+    vinylRecord.style.animation = 'none'; // Stop spinning
+    vinylRecord.style.transform = `rotate(${currentRotation}deg)`; // Freeze at current rotation
+  });
+
+  audio.addEventListener('ended', () => {
+    updateRotation(); // Update the current rotation angle
+    vinylRecord.style.animation = 'none'; // Stop spinning
+    vinylRecord.style.transform = `rotate(${currentRotation}deg)`; // Freeze at current rotation
+  });
+});
