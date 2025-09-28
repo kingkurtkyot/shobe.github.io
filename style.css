@@ -64,7 +64,8 @@ body {
   position: relative;
 }
 
-.picture {
+.picture,
+.picture video {
   background-color: #9b59b6;
   border: 3px solid #d7bde2;
   border-radius: 15px;
@@ -75,15 +76,16 @@ body {
   background-size: cover;
   background-position: center;
   position: relative;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  object-fit: cover; /* Ensures videos fit properly */
 }
 
-.picture:hover {
-  transform: scale(1.1) rotate(5deg);
-  border-color: #f8c3ff;
-  box-shadow: 0 0 25px 6px #f8c3ff;
+.picture:hover,
+.picture video:hover {
+  transform: scale(1.1) rotate(5deg); /* Apply zoom and rotation */
+  border-color: #f8c3ff; /* Change border color */
+  box-shadow: 0 0 25px 6px #f8c3ff; /* Add glowing effect */
 }
-
 .modal {
   display: none; /* Modal is hidden by default */
   position: fixed;

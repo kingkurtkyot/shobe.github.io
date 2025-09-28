@@ -5,10 +5,10 @@ const imageUrls = [
   '3.jpg', // Koya
   '4.jpg', // Tata
   '5.jpg', // Cooky
-  '6.jpeg', // Shooky
+  '6.jpg', // Shooky
   '7.jpeg', // Mang
   '8.jpeg', // Van
-  '9.jpeg', // Apeach
+  '9.jpg', // Apeach
   '10.jpeg', // Neo
   '11.jpeg', // Neo
   '12.jpeg', // Chimmy
@@ -19,9 +19,7 @@ const imageUrls = [
   '17.jpeg', // Mang
   '18.jpeg', // Van
   '19.jpg', // Apeach
-  '20.jpeg', // Neo
-  '21.jpeg', // RJ
-  '22.jpg'  // Chimmy
+  '20.jpeg'  // Chimmy
 ];
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -33,34 +31,59 @@ window.addEventListener('DOMContentLoaded', () => {
 
   pictureDivs.forEach((div) => {
     div.addEventListener('click', () => {
-      const imageUrl = div.style.backgroundImage.slice(5, -2); // Extract URL from background-image
-      modal.style.display = 'block';
-      modalImage.src = imageUrl;
-      caption.textContent = `Image ${div.dataset.order}`;
+      if (div.tagName === 'VIDEO') {
+        // Handle video modal
+        const videoSrc = div.querySelector('source').src;
+        modal.style.display = 'block';
+        modalImage.style.display = 'none'; // Hide image element
+        const videoElement = document.createElement('video');
+        videoElement.src = videoSrc;
+        videoElement.controls = true;
+        videoElement.autoplay = true;
+        videoElement.style.maxWidth = '80%';
+        videoElement.style.maxHeight = '80%';
+        modal.appendChild(videoElement);
+        caption.textContent = `Video ${div.dataset.order}`;
+      } else {
+        // Handle image modal
+        const imageUrl = div.style.backgroundImage.slice(5, -2); // Extract URL from background-image
+        modal.style.display = 'block';
+        modalImage.style.display = 'block'; // Show image element
+        modalImage.src = imageUrl;
+        caption.textContent = `Image ${div.dataset.order}`;
+      }
     });
   });
 
   closeModal.addEventListener('click', () => {
     modal.style.display = 'none';
+    const videoElement = modal.querySelector('video');
+    if (videoElement) {
+      modal.removeChild(videoElement); // Remove video element from modal
+    }
   });
 
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
       modal.style.display = 'none';
+      const videoElement = modal.querySelector('video');
+      if (videoElement) {
+        modal.removeChild(videoElement); // Remove video element from modal
+      }
     }
   });
-});
-window.addEventListener('DOMContentLoaded', () => {
+
   // Scatter effect for pictures
-  const pictureDivs = document.querySelectorAll('.picture');
   pictureDivs.forEach((div, idx) => {
-    div.style.backgroundImage = `url(${imageUrls[idx]})`;
-    const maxRotation = 10;
-    const rotation = (idx % 2 === 0 ? 1 : -1) * (Math.random() * maxRotation);
-    div.style.transform = `rotate(${rotation}deg)`;
+    if (div.tagName !== 'VIDEO') {
+      div.style.backgroundImage = `url(${imageUrls[idx]})`;
+      const maxRotation = 10;
+      const rotation = (idx % 2 === 0 ? 1 : -1) * (Math.random() * maxRotation);
+      div.style.transform = `rotate(${rotation}deg)`;
+    }
   });
 
-   const toggleBtn = document.getElementById('toggleMessageBtn');
+  const toggleBtn = document.getElementById('toggleMessageBtn');
   const letterContent = document.getElementById('letterContent'); // Target the letter content
 
   // Ensure the message content is hidden initially
