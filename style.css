@@ -334,9 +334,31 @@ audio {
 }
 .bt21-footer {
   margin-top: 40px;
-  font-size: 1rem; /* Adjust font size for smaller screens */
+  font-size: 1.2rem; /* Slightly larger text */
   color: #d3b6f3;
   font-style: italic;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #7b2ff7, #f107a3); /* Add a gradient background */
+  border-radius: 20px; /* Rounded corners for a softer look */
+  box-shadow: 0 4px 15px rgba(155, 89, 182, 0.6); /* Add a glowing effect */
+}
+
+.tinytan-container {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 400px; /* Make the image larger */
+  display: flex;
+  justify-content: center;
+}
+
+.tinytan-image {
+  width: 100%; /* Full width within the container */
+  border-radius: 15px; /* Rounded corners for a softer look */
+  box-shadow: 0 4px 15px rgba(155, 89, 182, 0.6); /* Add a glowing effect */
 }
 
 
@@ -378,4 +400,8 @@ audio {
     width: 120px; /* Smaller size for mobile */
     height: 120px; /* Smaller size for mobile */
   }
+  .audio {
+    width: 100%; /* Full width for mobile */
+  }
+  
 }
